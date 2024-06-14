@@ -360,7 +360,7 @@ Unmount with the `unmount` keyword.
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>2024.1</string>
+	<string>2024.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/alfredapp/mount-disks-workflow/</string>
 </dict>
