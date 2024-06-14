@@ -46,6 +46,7 @@ function run() {
     .flatMap(partition => {
       // Ignore irrelevant partitions
       if (partition.Content === "Microsoft Reserved") return []
+      if (partition.Content === "EFI") return []
 
       // Special handling for APFS partitions,
       // which map from a physical device to a different synthesized device
@@ -54,13 +55,14 @@ function run() {
         return diskUtilPlist("list", refDisk)
           .AllDisksAndPartitions
           .flatMap(parts => parts.APFSVolumes)
+          .filter(volumes => !volumes.OSInternal)
       }
 
       // Other file systems
       return partition
     })
 
-  // Filter for mounter or unmounted
+  // Filter for mounted or unmounted
   const listPartitions = listUnmounted ?
     parsedPartitions.filter(partition => partition.MountPoint) :
     parsedPartitions.filter(partition => !partition.MountPoint)
