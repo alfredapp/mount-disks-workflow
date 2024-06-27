@@ -69,7 +69,7 @@ function run() {
 
   // When no relevant partitions found
   if (listPartitions.length === 0) return JSON.stringify({ items: [{
-    title: `No ${listUnmounted === "1" ? "Mounted" : "Unmounted"} Disk Partitions Found`,
+    title: `No ${listUnmounted ? "Mounted" : "Unmounted"} Disk Partitions Found`,
     valid: false
   }]})
 
