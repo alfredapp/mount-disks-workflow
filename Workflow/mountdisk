@@ -42,7 +42,7 @@ function run() {
 
   const parsedPartitions = diskUtilPlist("list", ["external", "physical"])
     .AllDisksAndPartitions
-    .flatMap(disk => disk.Partitions)
+    .flatMap(disk => disk.Partitions || disk)
     .flatMap(partition => {
       // Ignore irrelevant partitions
       if (partition.Content === "Microsoft Reserved") return []
