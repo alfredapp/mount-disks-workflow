@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>863BE6C9-18B9-480C-94F0-57D4F18B09F9</string>
+				<string>74746618-61FC-41C3-9324-FA6B41433168</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -45,11 +45,49 @@
 				<false/>
 			</dict>
 		</array>
+		<key>74746618-61FC-41C3-9324-FA6B41433168</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FDFC1628-A180-451F-98FA-07CA9237F6EB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>8D3ECDBB-75C2-4EC4-BD98-6069F55A0AF8</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>863BE6C9-18B9-480C-94F0-57D4F18B09F9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>A6068EF0-5AB2-4D17-A03F-C4301E0151BE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>13C974B7-5643-4B94-B42B-6C136B8B3B8C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FDFC1628-A180-451F-98FA-07CA9237F6EB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4BE75450-E4B0-444D-B6F1-FF059357E34A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -69,6 +107,27 @@
 	<string>Mount Disks</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:volume_name}</string>
+				<key>title</key>
+				<string>Disk Mounted</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>13C974B7-5643-4B94-B42B-6C136B8B3B8C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -121,27 +180,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>'{var:volume_name}' has been mounted</string>
-				<key>title</key>
-				<string>Disk Mounted</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>13C974B7-5643-4B94-B42B-6C136B8B3B8C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -165,33 +203,12 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>'{var:volume_name}' has been unmounted</string>
-				<key>title</key>
-				<string>Disk Unmounted</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>863BE6C9-18B9-480C-94F0-57D4F18B09F9</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/sbin/diskutil unmount "${1}"</string>
+				<string>/usr/sbin/diskutil unmount "${1}" || printf 'failure'</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -256,6 +273,95 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:volume_name}</string>
+				<key>title</key>
+				<string>Failed to Unmount</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>FDFC1628-A180-451F-98FA-07CA9237F6EB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>soundname</key>
+				<string>Basso</string>
+				<key>systemsound</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.playsound</string>
+			<key>uid</key>
+			<string>4BE75450-E4B0-444D-B6F1-FF059357E34A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>failure</string>
+						<key>outputlabel</key>
+						<string>Failed</string>
+						<key>uid</key>
+						<string>8D3ECDBB-75C2-4EC4-BD98-6069F55A0AF8</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Success</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>74746618-61FC-41C3-9324-FA6B41433168</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{var:volume_name}</string>
+				<key>title</key>
+				<string>Disk Unmounted</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>863BE6C9-18B9-480C-94F0-57D4F18B09F9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>## Usage
@@ -279,7 +385,7 @@ Unmount with the `unmount` keyword.
 		<key>13C974B7-5643-4B94-B42B-6C136B8B3B8C</key>
 		<dict>
 			<key>xpos</key>
-			<real>425</real>
+			<real>485</real>
 			<key>ypos</key>
 			<real>45</real>
 		</dict>
@@ -297,12 +403,26 @@ Unmount with the `unmount` keyword.
 			<key>ypos</key>
 			<real>45</real>
 		</dict>
+		<key>4BE75450-E4B0-444D-B6F1-FF059357E34A</key>
+		<dict>
+			<key>xpos</key>
+			<real>640</real>
+			<key>ypos</key>
+			<real>195</real>
+		</dict>
+		<key>74746618-61FC-41C3-9324-FA6B41433168</key>
+		<dict>
+			<key>xpos</key>
+			<real>385</real>
+			<key>ypos</key>
+			<real>215</real>
+		</dict>
 		<key>863BE6C9-18B9-480C-94F0-57D4F18B09F9</key>
 		<dict>
 			<key>xpos</key>
-			<real>425</real>
+			<real>485</real>
 			<key>ypos</key>
-			<real>195</real>
+			<real>325</real>
 		</dict>
 		<key>A6068EF0-5AB2-4D17-A03F-C4301E0151BE</key>
 		<dict>
@@ -310,6 +430,13 @@ Unmount with the `unmount` keyword.
 			<real>235</real>
 			<key>ypos</key>
 			<real>45</real>
+		</dict>
+		<key>FDFC1628-A180-451F-98FA-07CA9237F6EB</key>
+		<dict>
+			<key>xpos</key>
+			<real>485</real>
+			<key>ypos</key>
+			<real>195</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
